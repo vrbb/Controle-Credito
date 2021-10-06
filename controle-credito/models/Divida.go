@@ -1,6 +1,7 @@
 package models
 
 import (
+	"controle-credito/conf"
 	"time"
 
 	"github.com/astaxie/beego/orm"
@@ -10,9 +11,10 @@ type Divida struct {
 	Id          int
 	Valor       float32   `orm:"null"`
 	DataCriacao time.Time `orm:"auto_now_add;type(datetime)"`
+	conf.Encryptionkey
 }
 
-func InserirDivida(divida Divida) *Divida {
+func AddDebt(divida Divida) *Divida {
 	o := orm.NewOrm()
 	qs := o.QueryTable(new(Divida))
 
@@ -42,7 +44,7 @@ func InserirDivida(divida Divida) *Divida {
 	return &d
 }
 
-func BuscarTodasDividas() []*Divida {
+func AllDebt() []*Divida {
 	o := orm.NewOrm()
 	var dividas []*Divida
 	o.QueryTable(new(Divida)).All(&dividas)
@@ -50,7 +52,7 @@ func BuscarTodasDividas() []*Divida {
 	return dividas
 }
 
-func AtualizarDivida(divida Divida) *Divida {
+func UpdateDebt(divida Divida) *Divida {
 	o := orm.NewOrm()
 	d := Divida{Id: divida.Id}
 	var atualizardDivida Divida
@@ -73,7 +75,7 @@ func AtualizarDivida(divida Divida) *Divida {
 	return &atualizardDivida
 }
 
-func DeletarDivida(id int) bool {
+func DeleteDebt(id int) bool {
 	o := orm.NewOrm()
 	_, err := o.Delete(&Divida{Id: id})
 	if err == nil {
@@ -83,7 +85,7 @@ func DeletarDivida(id int) bool {
 	return false
 }
 
-func BuscarDividaPeloId(id int) *Divida {
+func GetDebt(id int) *Divida {
 	o := orm.NewOrm()
 	divida := Divida{Id: id}
 	o.Read(&divida)

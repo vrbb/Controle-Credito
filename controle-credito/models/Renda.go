@@ -1,6 +1,7 @@
 package models
 
 import (
+	"controle-credito/conf"
 	"time"
 
 	"github.com/astaxie/beego/orm"
@@ -11,9 +12,10 @@ type Renda struct {
 	Descricao   string    `orm:"null"`
 	Valor       float32   `orm:"null"`
 	DataCriacao time.Time `orm:"auto_now_add;type(datetime)"`
+	conf.Encryptionkey
 }
 
-func InserirRenda(renda Renda) *Renda {
+func AddIncome(renda Renda) *Renda {
 	o := orm.NewOrm()
 	qs := o.QueryTable(new(Renda))
 
@@ -43,7 +45,7 @@ func InserirRenda(renda Renda) *Renda {
 	return &r
 }
 
-func BuscarTodasRendas() []*Renda {
+func AllIncome() []*Renda {
 	o := orm.NewOrm()
 	var rendas []*Renda
 	o.QueryTable(new(Renda)).All(&rendas)
@@ -51,7 +53,7 @@ func BuscarTodasRendas() []*Renda {
 	return rendas
 }
 
-func AtualizarRenda(renda Renda) *Renda {
+func UpdateIncome(renda Renda) *Renda {
 	o := orm.NewOrm()
 	r := Renda{Id: renda.Id}
 	var atualizardRenda Renda
@@ -74,7 +76,7 @@ func AtualizarRenda(renda Renda) *Renda {
 	return &atualizardRenda
 }
 
-func DeletarRenda(id int) bool {
+func DeleteIncome(id int) bool {
 	o := orm.NewOrm()
 	_, err := o.Delete(&Renda{Id: id})
 	if err == nil {
@@ -84,7 +86,7 @@ func DeletarRenda(id int) bool {
 	return false
 }
 
-func BuscarRendaPeloId(id int) *Renda {
+func GetIncome(id int) *Renda {
 	o := orm.NewOrm()
 	renda := Renda{Id: id}
 	o.Read(&renda)

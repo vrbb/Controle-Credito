@@ -13,14 +13,6 @@ type Renda struct {
 	DataCriacao time.Time `orm:"auto_now_add;type(datetime)"`
 }
 
-func init() {
-	// register model
-	orm.RegisterModel(new(Renda))
-
-	// set default database
-	orm.RegisterDataBase("default", "mysql", "root:root@/my_db?charset=utf8")
-}
-
 func main() {
 	orm.RegisterModel(new(Renda))
 }

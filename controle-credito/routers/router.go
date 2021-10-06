@@ -6,5 +6,15 @@ import (
 )
 
 func init() {
-    beego.Router("/", &controllers.MainController{})
+	beego.Router("/", &controllers.MainController{})
+
+	// Pessoa
+
+	// Endereço
+
+	// Bem material
+
+	// Dívida
+
+	// Renda
 }

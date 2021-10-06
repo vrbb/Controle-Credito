@@ -1,6 +1,7 @@
 package models
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/astaxie/beego/orm"
@@ -10,14 +11,6 @@ type Divida struct {
 	Id          int
 	Valor       float32   `orm:"null"`
 	DataCriacao time.Time `orm:"auto_now_add;type(datetime)"`
-}
-
-func init() {
-	// register model
-	orm.RegisterModel(new(Divida))
-
-	// set default database
-	orm.RegisterDataBase("default", "mysql", "root:root@/my_db?charset=utf8")
 }
 
 func main() {

@@ -8,11 +8,11 @@ import (
 )
 
 type Pessoa struct {
-	Id              int
-	Cpf             string    `orm:"null;unique"`
-	Nome            string    `orm:"null"`
-	Data_nascimento time.Time `orm:"auto_now_add;type(datetime)"`
-	Data_criacao    time.Time `orm:"auto_now_add;type(datetime)"`
+	Id             int
+	Cpf            string    `orm:"null;unique"`
+	Nome           string    `orm:"null"`
+	DataNascimento time.Time `orm:"auto_now_add;type(datetime)"`
+	DataCriacao    time.Time `orm:"auto_now_add;type(datetime)"`
 }
 
 func init() {
@@ -68,7 +68,7 @@ func InserirPessoa(pessoa Pessoa) *Pessoa {
 	// pessoa.Cpf, _ = hashPassword(pessoa.Cpf)
 
 	// get now datetime
-	pessoa.Data_criacao = time.Now()
+	pessoa.DataCriacao = time.Now()
 
 	// Insert
 	id, err := i.Insert(&pessoa)
@@ -102,7 +102,7 @@ func AtualizarPessoa(pessoa Pessoa) *Pessoa {
 	// get existing pessoa
 	if o.Read(&p) == nil {
 
-		pessoa.Data_criacao = p.Data_criacao
+		pessoa.DataCriacao = p.DataCriacao
 		p = pessoa
 		_, err := o.Update(&p)
 

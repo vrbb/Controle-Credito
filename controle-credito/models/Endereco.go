@@ -18,10 +18,6 @@ type Endereco struct {
 	DataCriacao     time.Time `orm:"auto_now_add;type(datetime)"`
 }
 
-func main() {
-	orm.RegisterModel(new(Endereco))
-}
-
 func InserirEndereco(endereco Endereco) *Endereco {
 	o := orm.NewOrm()
 	qs := o.QueryTable(new(Endereco))

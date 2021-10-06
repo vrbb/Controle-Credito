@@ -1,7 +1,6 @@
 package models
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/astaxie/beego/orm"
@@ -11,10 +10,6 @@ type Divida struct {
 	Id          int
 	Valor       float32   `orm:"null"`
 	DataCriacao time.Time `orm:"auto_now_add;type(datetime)"`
-}
-
-func main() {
-	orm.RegisterModel(new(Divida))
 }
 
 func InserirDivida(divida Divida) *Divida {

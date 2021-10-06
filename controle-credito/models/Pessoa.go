@@ -1,7 +1,6 @@
 package models
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/astaxie/beego/orm"
@@ -13,39 +12,6 @@ type Pessoa struct {
 	Nome           string    `orm:"null"`
 	DataNascimento time.Time `orm:"auto_now_add;type(datetime)"`
 	DataCriacao    time.Time `orm:"auto_now_add;type(datetime)"`
-}
-
-func main() {
-	orm.RegisterModel(new(Pessoa))
-
-	o := orm.NewOrm()
-
-	pessoa := new(Pessoa)
-
-	fmt.Println(o.Insert(pessoa))
-
-	pessoa.Nome = "Your"
-	fmt.Println(o.Update(pessoa))
-	fmt.Println(o.Read(pessoa))
-	fmt.Println(o.Delete(pessoa))
-
-	// insert
-	id, err := o.Insert(&pessoa)
-	fmt.Printf("ID: %d, ERR: %v\n", id, err)
-
-	// update
-	pessoa.Nome = "astaxie"
-	num, err := o.Update(&pessoa)
-	fmt.Printf("NUM: %d, ERR: %v\n", num, err)
-
-	// read one
-	u := Pessoa{Id: pessoa.Id}
-	err = o.Read(&u)
-	fmt.Printf("ERR: %v\n", err)
-
-	// delete
-	num, err = o.Delete(&u)
-	fmt.Printf("NUM: %d, ERR: %v\n", num, err)
 }
 
 func InserirPessoa(pessoa Pessoa) *Pessoa {

@@ -5,6 +5,8 @@ import (
 	_ "controle-credito/routers"
 	"fmt"
 
+	_ "github.com/lib/pq"
+
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 )
@@ -20,13 +22,13 @@ func init() {
 	// registra o drive
 	orm.RegisterDriver("postgres", orm.DRPostgres)
 
-	// configura o pool de conexões
+	// configura o pool de conexões {Usar Enable quando for usar a criptografia}
 	orm.RegisterDataBase("default",
 		"postgres",
 		"user=postgres password=root host=127.0.0.1 port=5432 dbname=credito sslmode=disable")
 
 	// cria as tabelas
-	if err := orm.RunSyncdb("default", true, true); err != nil {
+	if err := orm.RunSyncdb("default", false, true); err != nil {
 		fmt.Println(err)
 	}
 }

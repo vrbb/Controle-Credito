@@ -13,10 +13,6 @@ type Renda struct {
 	DataCriacao time.Time `orm:"auto_now_add;type(datetime)"`
 }
 
-func main() {
-	orm.RegisterModel(new(Renda))
-}
-
 func InserirRenda(renda Renda) *Renda {
 	o := orm.NewOrm()
 	qs := o.QueryTable(new(Renda))

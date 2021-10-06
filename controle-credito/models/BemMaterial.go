@@ -13,10 +13,6 @@ type BemMaterial struct {
 	DataCriacao time.Time `orm:"auto_now_add;type(datetime)"`
 }
 
-func main() {
-	orm.RegisterModel(new(BemMaterial))
-}
-
 func InserirBemMaterial(bemMateiral BemMaterial) *BemMaterial {
 	o := orm.NewOrm()
 	qs := o.QueryTable(new(BemMaterial))

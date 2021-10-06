@@ -1,6 +1,7 @@
 package models
 
 import (
+	"controle-credito/conf"
 	"time"
 
 	"github.com/astaxie/beego/orm"
@@ -16,28 +17,34 @@ type Endereco struct {
 	Complemento     string    `orm:"null"`
 	PontoReferencia string    `orm:"null"`
 	DataCriacao     time.Time `orm:"auto_now_add;type(datetime)"`
+	conf.Encryptionkey
 }
 
-func InserirEndereco(endereco Endereco) *Endereco {
+func AddAddress(endereco Endereco) *Endereco {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Endereco))
 
-	i, _ := qs.PrepareInsert()
-
-	var e Endereco
+	var r orm.RawSeter
 
 	// hash cpf {criptografia}
 	// endereco.Cpf, _ = hashPassword(endereco.Cpf)
 
 	// get now datetime
 	endereco.DataCriacao = time.Now()
-
 	// Insert
-	id, err := i.Insert(&endereco)
+	r = o.Raw("INSERT INTO `Endereco` (`Logadouro`, `Numero`, `Bairro`, `Cidade`, `Estado`, `Estado`, `Complemento`, `PontoReferencia`, `DataCriacao`) values(?,?,?,?,?,?,?,?)",
+		endereco.Logadouro,
+		endereco.Numero,
+		endereco.Bairro,
+		endereco.Cidade,
+		endereco.Estado,
+		endereco.Complemento,
+		endereco.PontoReferencia,
+		endereco.DataCriacao)
+	_, err := r.Exec()
+
 	if err == nil {
-		// successfully inserted
-		e = Endereco{Id: int(id)}
-		err := o.Read(&e)
+
+		err := o.Read(&endereco)
 		if err == orm.ErrNoRows {
 			return nil
 		}
@@ -45,10 +52,10 @@ func InserirEndereco(endereco Endereco) *Endereco {
 		return nil
 	}
 
-	return &e
+	return &endereco
 }
 
-func BuscarTodasEnderecos() []*Endereco {
+func AllAddress() []*Endereco {
 	o := orm.NewOrm()
 	var enderecos []*Endereco
 	o.QueryTable(new(Endereco)).All(&enderecos)
@@ -56,7 +63,7 @@ func BuscarTodasEnderecos() []*Endereco {
 	return enderecos
 }
 
-func AtualizarEndereco(endereco Endereco) *Endereco {
+func UpdateAddress(endereco Endereco) *Endereco {
 	o := orm.NewOrm()
 	e := Endereco{Id: endereco.Id}
 	var atualizardEndereco Endereco
@@ -79,7 +86,7 @@ func AtualizarEndereco(endereco Endereco) *Endereco {
 	return &atualizardEndereco
 }
 
-func DeletarEndereco(id int) bool {
+func DeleteAddress(id int) bool {
 	o := orm.NewOrm()
 	_, err := o.Delete(&Endereco{Id: id})
 	if err == nil {
@@ -89,7 +96,7 @@ func DeletarEndereco(id int) bool {
 	return false
 }
 
-func BuscarEnderecoPeloId(id int) *Endereco {
+func GetAddress(id int) *Endereco {
 	o := orm.NewOrm()
 	endereco := Endereco{Id: id}
 	o.Read(&endereco)

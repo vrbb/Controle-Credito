@@ -1,6 +1,7 @@
 package models
 
 import (
+	"controle-credito/conf"
 	"time"
 
 	"github.com/astaxie/beego/orm"
@@ -11,9 +12,10 @@ type BemMaterial struct {
 	Descricao   string    `orm:"null"`
 	Valor       float32   `orm:"null"`
 	DataCriacao time.Time `orm:"auto_now_add;type(datetime)"`
+	conf.Encryptionkey
 }
 
-func InserirBemMaterial(bemMateiral BemMaterial) *BemMaterial {
+func AddMaterial(bemMateiral BemMaterial) *BemMaterial {
 	o := orm.NewOrm()
 	qs := o.QueryTable(new(BemMaterial))
 
@@ -43,7 +45,7 @@ func InserirBemMaterial(bemMateiral BemMaterial) *BemMaterial {
 	return &bm
 }
 
-func BuscarTodasBemMaterials() []*BemMaterial {
+func AllMaterial() []*BemMaterial {
 	o := orm.NewOrm()
 	var bemMateirals []*BemMaterial
 	o.QueryTable(new(BemMaterial)).All(&bemMateirals)
@@ -51,7 +53,7 @@ func BuscarTodasBemMaterials() []*BemMaterial {
 	return bemMateirals
 }
 
-func AtualizarBemMaterial(bemMateiral BemMaterial) *BemMaterial {
+func UpdateMaterial(bemMateiral BemMaterial) *BemMaterial {
 	o := orm.NewOrm()
 	bm := BemMaterial{Id: bemMateiral.Id}
 	var atualizardBemMaterial BemMaterial
@@ -74,7 +76,7 @@ func AtualizarBemMaterial(bemMateiral BemMaterial) *BemMaterial {
 	return &atualizardBemMaterial
 }
 
-func DeletarBemMaterial(id int) bool {
+func DeleteMaterial(id int) bool {
 	o := orm.NewOrm()
 	_, err := o.Delete(&BemMaterial{Id: id})
 	if err == nil {
@@ -84,7 +86,7 @@ func DeletarBemMaterial(id int) bool {
 	return false
 }
 
-func BuscarBemMaterialPeloId(id int) *BemMaterial {
+func GetMaterial(id int) *BemMaterial {
 	o := orm.NewOrm()
 	bemMateiral := BemMaterial{Id: id}
 	o.Read(&bemMateiral)

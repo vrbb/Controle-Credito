@@ -1,1 +1,23 @@
-# Projeto-Go-Armazenamento-Dados
+## Projeto-Go-Armazenamento-Dados
+ Projeto criado com intuito de resolver a próblemática oferecendo: armazenamento, processamento e disponibilização de dados, sempre considerando que tudo deve estar conforme as boas práticas de segurança em TI. 
+ No projeto existem três grandes bases de dados externas que organizam as seguintes informações:
+### Base A
+ • CPF
+ • Nome
+ • Endereço
+ • Lista de dívidas
+### Base B
+ • Idade
+ • Lista de bens (Imóveis, etc)
+ • Endereço
+ • Fonte de renda
+### Base C
+• Última consulta do CPF em um Bureau de crédito (Serasa e outros).
+• Movimentação financeira nesse CPF.
+• Dados relacionados a última compra com cartao de crédito vinculado ao CPF.
+### Ferramentas
+Utilizando a linguagem de progamação da google GoLang, postgreSQL com SSL
+
+### UML
+No arquivo UML Diagram.PDF é apresentada uma possivel representaçao de dados pos processamento para aproveitamentos das bases A e B
+

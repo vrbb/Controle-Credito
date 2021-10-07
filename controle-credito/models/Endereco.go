@@ -8,7 +8,7 @@ import (
 )
 
 type Endereco struct {
-	Id              int
+	Id              int       `orm:"not_null;unique"`
 	Logadouro       string    `orm:"null"`
 	Numero          string    `orm:"null"`
 	Bairro          string    `orm:"null"`
@@ -17,7 +17,7 @@ type Endereco struct {
 	Complemento     string    `orm:"null"`
 	PontoReferencia string    `orm:"null"`
 	DataCriacao     time.Time `orm:"auto_now_add;type(datetime)"`
-	Pessoa_id       int
+	Cpf             string    `orm:"not_null;unique"`
 	conf.Encryptionkey
 }
 

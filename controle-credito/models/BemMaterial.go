@@ -8,11 +8,11 @@ import (
 )
 
 type BemMaterial struct {
-	Id          int
+	Id          int       `orm:"not_null;unique"`
 	Descricao   string    `orm:"null"`
 	Valor       float32   `orm:"null"`
 	DataCriacao time.Time `orm:"auto_now_add;type(datetime)"`
-	Pessoa_id   int
+	Cpf         string    `orm:"not_null;unique"`
 	conf.Encryptionkey
 }
 

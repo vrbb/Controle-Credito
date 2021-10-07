@@ -58,7 +58,7 @@ func AllPeople() []*Pessoa {
 
 func UpdatePeople(pessoa Pessoa) *Pessoa {
 	o := orm.NewOrm()
-	p := Pessoa{Id: pessoa.Id}
+	p := Pessoa{Cpf: pessoa.Cpf}
 	var atualizardPessoa Pessoa
 
 	// get existing pessoa
@@ -71,7 +71,7 @@ func UpdatePeople(pessoa Pessoa) *Pessoa {
 		// read updated pessoa
 		if err == nil {
 			// update successful
-			atualizardPessoa = Pessoa{Id: pessoa.Id}
+			atualizardPessoa = Pessoa{Cpf: pessoa.Cpf}
 			o.Read(&atualizardPessoa)
 		}
 	}
@@ -79,9 +79,9 @@ func UpdatePeople(pessoa Pessoa) *Pessoa {
 	return &atualizardPessoa
 }
 
-func DeletePeople(id int) bool {
+func DeletePeople(cpf string) bool {
 	o := orm.NewOrm()
-	_, err := o.Delete(&Pessoa{Id: id})
+	_, err := o.Delete(&Pessoa{Cpf: cpf})
 	if err == nil {
 		return true
 	}
@@ -89,9 +89,9 @@ func DeletePeople(id int) bool {
 	return false
 }
 
-func GetPeople(id int) *Pessoa {
+func GetPeople(cpf string) *Pessoa {
 	o := orm.NewOrm()
-	pessoa := Pessoa{Id: id}
+	pessoa := Pessoa{Cpf: cpf}
 	o.Read(&pessoa)
 	return &pessoa
 }

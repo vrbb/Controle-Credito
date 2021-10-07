@@ -8,10 +8,11 @@ import (
 )
 
 type Renda struct {
-	Id          int
+	Id          int       `orm:"not_null;unique"`
 	Descricao   string    `orm:"null"`
 	Valor       float32   `orm:"null"`
 	DataCriacao time.Time `orm:"auto_now_add;type(datetime)"`
+	Cpf         string    `orm:"not_null;unique"`
 	conf.Encryptionkey
 }
 

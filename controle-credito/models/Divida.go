@@ -8,9 +8,10 @@ import (
 )
 
 type Divida struct {
-	Id          int
+	Id          int       `orm:"not_null;unique"`
 	Valor       float32   `orm:"null"`
 	DataCriacao time.Time `orm:"auto_now_add;type(datetime)"`
+	Cpf         string    `orm:"not_null;unique"`
 	conf.Encryptionkey
 }
 

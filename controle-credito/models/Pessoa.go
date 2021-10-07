@@ -8,8 +8,7 @@ import (
 )
 
 type Pessoa struct {
-	Id             int
-	Cpf            string    `orm:"null;unique"`
+	Cpf            string    `orm:"not_null;unique"`
 	Nome           string    `orm:"null"`
 	DataNascimento time.Time `orm:"auto_now_add;type(datetime)"`
 	DataCriacao    time.Time `orm:"auto_now_add;type(datetime)"`

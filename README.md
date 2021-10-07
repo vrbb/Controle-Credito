@@ -22,3 +22,10 @@ Utilizando a linguagem de progamação da google GoLang, postgreSQL com SSL
 Na imagem abaixo é apresentada uma possivel representaçao de dados pos processamento para aproveitamentos das bases A e B
 
 ![UML Diagram](https://user-images.githubusercontent.com/36166925/136266150-391d61c6-1c3c-4172-9629-9a76f3be512a.jpg)
+
+### Execução do projeto
+
+Para executar o projeto basta rodar o comando:
+```
+go run main.go
+```

@@ -1,5 +1,5 @@
 ## Projeto-Go-Armazenamento-Dados
- Projeto criado com intuito de resolver a próblemática oferecendo: armazenamento, processamento e disponibilização de dados, sempre considerando que tudo deve estar conforme as boas práticas de segurança em TI. 
+ Projeto criado com intuito de resolver a problemática oferecendo: armazenamento, processamento e disponibilização de dados, sempre considerando que tudo deve estar conforme as boas práticas de segurança em TI. 
  No projeto existem três grandes bases de dados externas que organizam as seguintes informações:
 ### Base A
  • CPF

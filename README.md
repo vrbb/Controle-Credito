@@ -2,19 +2,19 @@
  Projeto criado com intuito de resolver a problemática oferecendo: armazenamento, processamento e disponibilização de dados, sempre considerando que tudo deve estar conforme as boas práticas de segurança em TI. 
  No projeto existem três grandes bases de dados externas que organizam as seguintes informações:
 ### Base A
- • CPF
- • Nome
- • Endereço
- • Lista de dívidas
+ * CPF
+ * Nome
+ * Endereço
+ * Lista de dívidas
 ### Base B
- • Idade
- • Lista de bens (Imóveis, etc)
- • Endereço
- • Fonte de renda
+ * Idade
+ * Lista de bens (Imóveis, etc)
+ * Endereço
+ * Fonte de renda
 ### Base C
-• Última consulta do CPF em um Bureau de crédito (Serasa e outros).
-• Movimentação financeira nesse CPF.
-• Dados relacionados a última compra com cartao de crédito vinculado ao CPF.
+* Última consulta do CPF em um Bureau de crédito (Serasa e outros).
+* Movimentação financeira nesse CPF.
+* Dados relacionados a última compra com cartao de crédito vinculado ao CPF.
 ### Ferramentas
 Utilizando a linguagem de progamação da google GoLang, postgreSQL com SSL
 

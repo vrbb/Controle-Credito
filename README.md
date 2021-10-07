@@ -25,7 +25,8 @@ Na imagem abaixo é apresentada uma possivel representaçao de dados pos process
 
 ### Execução do projeto
 
-Para executar o projeto basta rodar o comando:
+Para executar o projeto basta rodar os seguintes comandos:
 ```
+cd controle-credito
 go run main.go
 ```

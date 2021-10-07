@@ -12,6 +12,7 @@ type BemMaterial struct {
 	Descricao   string    `orm:"null"`
 	Valor       float32   `orm:"null"`
 	DataCriacao time.Time `orm:"auto_now_add;type(datetime)"`
+	Pessoa_id   int
 	conf.Encryptionkey
 }
 

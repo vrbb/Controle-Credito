@@ -17,6 +17,7 @@ type Endereco struct {
 	Complemento     string    `orm:"null"`
 	PontoReferencia string    `orm:"null"`
 	DataCriacao     time.Time `orm:"auto_now_add;type(datetime)"`
+	Pessoa_id       int
 	conf.Encryptionkey
 }
 

@@ -11,6 +11,7 @@ type Divida struct {
 	Id          int
 	Valor       float32   `orm:"null"`
 	DataCriacao time.Time `orm:"auto_now_add;type(datetime)"`
+	Pessoa_id   int
 	conf.Encryptionkey
 }
 

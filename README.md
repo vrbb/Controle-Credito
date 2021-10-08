@@ -25,3 +25,4 @@ Na imagem abaixo é apresentada uma possivel representaçao de dados pos process
 
 ### Considerações finais
 Gostaria de ter colocado a Base B e a Base C no Elastic para otimização mas infelizmente me vi impossibilitada pela escolha infeliz do beego que o ORM não da suporte ao Elastic. Tentei também ativar o sslmode para cripitografar as informações do postegres mas não consegui, acredito que se tivesse tentado por mais tempo teria sido possível, voltarei a esse projeto futuramente e o terminarei.
+Ainda fiz a implementação do banco com docker-compose e com a api do Beego.
